@@ -6,7 +6,8 @@ function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 12,
         center: centerPos,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeControl: false
     });
 
     const infoWindow = new google.maps.InfoWindow();
@@ -67,14 +68,14 @@ function initMap() {
                     map.setCenter(pos);
                     document.getElementById("spinner-holder").style.display = 'none'
                 },
-                () => {
-                    handleLocationError(true, infoWindow, map.getCenter());
+                (error) => {
+                    alert("Could not get position! Check your permissions")
                     document.getElementById("spinner-holder").style.display = 'none'
                 }
             );
         } else {
             // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
+            alert("Browser doesn't support geolocation!")
             document.getElementById("spinner-holder").style.display = 'none'
         }
     });
