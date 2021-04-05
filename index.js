@@ -4,11 +4,13 @@ function initMap() {
 
     const centerPos = { lat: markersList[0].lat, lng: markersList[0].long }
     const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 11,
-        center: centerPos
+        zoom: 12,
+        center: centerPos,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
     const infoWindow = new google.maps.InfoWindow();
+    // map.fitBounds(viewport)
 
 
     for (const aMarker of markersList) {
